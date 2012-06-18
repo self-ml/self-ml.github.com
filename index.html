@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title> 
+
+
+ 
+
+
+ 
+
+
+ self-ml ^1  is a structural data language designed to be written by</title>
+</head>
+<body>
+<!-- Title: Introducing self-ml -->
+
+
+<!-- Subtitle: A human data format -->
+
+
+<!-- Slug: self-ml -->
+
+
+<p>self-ml<a href="self-ml">^1</a> is a structural data language designed to be written by humans and read by computers. Its syntax is based on <a href="http://en.wikipedia.org/wiki/S-expression">S-expressions</a> with some changes and simplifications.</p>
+
+<div class="sidebar"><div class="inner"><h3>Why not <strong>JSON</strong>?</h3><p><a href="http://www.json.org/">JSON</a> is a great computer  ↔  computer format. It's ideal for RSS feeds or the output of a website's API.<p>
+    
+<p>self-ml is designed as a human  ↔  computer format. Its main use is for configuration files and structured data.</p></div></div>
+
+
+<p>The biggest feature of self-ml is its simplicity. It <em>doesn&rsquo;t</em> have attributes, namespaces, dictionaries, symbols or even numerics. Lists and strings are all you got.</p>
+
+<table class="code comparison"><tr><th>self-ml</th><th>XML</th></tr>
+<tr><td>(empty-tag)</td> <td>&lt;empty-tag/></td></tr>
+<tr><td>(vegetable Potato)</td> <td>&lt;vegetable>Potato&lt;/vegetable></td></tr>
+<tr><td>(vegetables Potato Carrot Onion)</td> <td>&lt;vegetables><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;vegetable>Potato&lt;/vegetable><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;vegetable>Carrot&lt;/vegetable><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;vegetable>Onion&lt;/vegetable><br>
+&lt;/vegetables></td></tr>
+<tr><td>(person [John Smith])</td> <td>&lt;person>John Smith&lt;/person></td></tr>
+<tr><td>(code [NSMutableString *str = [[[NSMutableString alloc] init] autorelease];])</td> <td>&lt;code>NSMutableString *str = [[[NSMutableString alloc] init] autorelease]&lt;/code></td></tr>
+<tr><td>(student [Robert'); DROP TABLE Students;--])</td> <td>&lt;student>Robert'); DROP TABLE Students;--&lt;/student></td></tr>
+<tr><td>`Some complex data !@£$%^&*<([{/`</td> <td>&lt;![CDATA[Some complex data !@£$%^&*<([{/]]></td></tr>
+<tr><td># A line comment</td> <td></td></tr>
+<tr><td>{# A block<br>comment #}</td> <td>&lt;!-- A block<br>comment --></td></tr>
+<tr><td>(apple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(music<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPod<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iTunes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(computers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iMac<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Mac mini])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(phones<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPhone)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(dishwashers))</td> <td>&lt;apple><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;music><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;product>iPod&lt;/product><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;product>iTunes&lt;/product><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/music><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;computers><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;product>iMac&lt;/product><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;product>Mac mini&lt;/product><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/computers><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;phones><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;product>iPhone&lt;/product><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/phones><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;dishwashers/><br>
+&lt;/apple></tr>
+</table>
+
+
+<p>As you can see, especially from the last example, self-ml is a lot more succinct than XML, easier to read and easier to write. There&rsquo;s not a single backslash escape in sight: self-ml is Regex Friendly™. self-ml can have lists of strings <code>(music iPod iTunes)</code> and multiple nodes under the root node.</p>
+
+<h3>Casual Grammar</h3>
+
+<div class="warning"><strong>Warning:</strong> Technical details ahead. <a href="#implementations">Skip to details on implementations</a>.</div>
+
+
+<p>A <em>node</em> is the basic unit of self-ml. A node can either be a <em>list</em> or a <em>string</em>.</p>
+
+<pre><code>node := list | string.</code></pre>
+
+
+<p>A <em>list</em> comprises of a <em>head</em> and a list of other nodes, enclosed in round brackets. For example, <code>(head node1 node2 node3)</code>. Unlike usual s-exprs, the empty list <code>()</code> is not accepted.</p>
+
+<pre><code>list := '(' string node_list ')'.
+
+node_list := node_list node. 
+node_list := node_list.
+node_list := .</code></pre>
+
+
+<p><em>Strings</em> can be written in three forms:</p>
+
+<pre><code>string := BACKTICK_STRING | BRACKETED_STRING | VERBATIM_STRING.</code></pre>
+
+
+
+
+<ol>
+    <li><p>If it contains no whitespace or brackets, then it can be written verbatim. For example, <code>some-string</code>.</p><pre><code>VERBATIM_STRING := [^[\](){}\s]+</code></pre></li>
+
+    <li><p>If all square brackets in the string are balanced, then it can be written enclosed in square brackets. For example, <code>[NSMutableString *x = [[[NSMutableString alloc] init] autorelease];]</code>.</p><pre><code>BRACKETED_STRING := '[' ... deal with nested brackets ... ']'</code></pre></li>
+
+    <li><p>If you need to express unbalanced square brackets <code>[ ]</code> then you can use a *backtick string*. A backtick string starts at a <code>`</code> continues until another <code>`</code> is found, unless that backtick  has another backtick after it (two backticks insert a single backtick into the backtick string). For example, <code>`This is a ``backtick`` string`</code>.</p><pre><code>BACKTICK_STRING := `(``|[^`])*?`</code></pre></li>
+</ol>
+
+
+<p>The <em>root node</em> is a list containing all top level nodes in the document. As mentioned, you can have any number of top level nodes, including zero.</p>
+
+<pre><code>root := node_list.</code></pre>
+
+
+<p>There are two types of comments. Comments may only occur outside of bracketed and backtick string literals.</p>
+
+<ol>
+<li><p>Line comments start at <code>#</code> and continue until a <code>CR</code>, <code>LF</code>, <code>CR LF</code> or other newline character sequence is found.</p><pre><code>LINE_COMMENT := #.*$</code></pre></li>
+
+<li><p>Block comments start at <code>{#</code> and end when a matching <code>#}</code> is found. Block comments may be nested.</p><pre><code>BLOCK_COMMENT := \{#.*?#\}</code></pre></li>
+</ol>
+
+
+<p><a name="implementations"></a></p>
+
+<h3>Implementations</h3>
+
+
+<p>I have written an implementation in C. It&rsquo;s <a href="http://github.com/fileability/self-ml">available on github</a>.</p>
+
+<p>Other implementations are of course welcome! As are text editor plugins, testcases, documentation, patches, etc. Contact me <a href="http://github.com/inbox/new">on github</a> or email <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x61;&#x6e;&#121;&#116;&#104;&#105;&#x6e;&#x67;&#64;&#x66;&#x69;&#x6c;&#x65;&#97;&#98;&#x69;&#x6c;&#x69;&#x74;&#x79;&#x2e;&#110;&#101;&#x74;">&#97;&#110;&#121;&#x74;&#x68;&#105;&#x6e;&#103;&#64;&#x66;&#105;&#108;&#x65;&#x61;&#x62;&#x69;&#x6c;&#x69;&#x74;&#121;&#x2e;&#x6e;&#x65;&#x74;</a>.</p>
+
+<p><em>Edit:</em> There&rsquo;s now a very simple <a href="http://dequechair.com/self-ml-textmate.zip">textmate bundle</a></p>
+</body>
+</html>
